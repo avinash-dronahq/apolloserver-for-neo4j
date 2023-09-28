@@ -24,7 +24,7 @@
   },
   "contributors": [],
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "NODE_ENV=development nodemon index.js",
     "dev": "",
     "test": ""
   },

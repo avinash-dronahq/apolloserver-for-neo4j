@@ -21,6 +21,7 @@ async function main() {
     const neoSchema = new Neo4jGraphQL({ typeDefs, driver });
     const server = new ApolloServer({
         schema: await neoSchema.getSchema(),
+        /*
         plugins: [
             // Install a landing page plugin based on NODE_ENV
             process.env.NODE_ENV === 'production'
@@ -30,6 +31,7 @@ async function main() {
                 })
               : ApolloServerPluginLandingPageLocalDefault({ footer: false }),
           ]
+          */
     });
     const {url} = await startStandaloneServer(server, {
         context: async ({ req }) => ({ req }), listen: { port: port }
