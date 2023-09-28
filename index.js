@@ -24,11 +24,11 @@ async function main() {
         plugins: [
             // Install a landing page plugin based on NODE_ENV
             process.env.NODE_ENV === 'production'
-              ? ApolloServerPluginLandingPageLocalDefault({ footer: false })
-              : ApolloServerPluginLandingPageProductionDefault({
-                graphRef: 'my-graph-id@my-graph-variant',
-                footer: false,
-              })
+              ? ApolloServerPluginLandingPageProductionDefault({
+                  graphRef: 'my-graph-id@my-graph-variant',
+                  footer: false,
+                })
+              : ApolloServerPluginLandingPageLocalDefault({ footer: false }),
           ]
     });
     const {url} = await startStandaloneServer(server, {
