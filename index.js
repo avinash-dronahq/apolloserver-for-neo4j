@@ -4,6 +4,8 @@ import { Neo4jGraphQL } from "@neo4j/graphql";
 import { toGraphQLTypeDefs } from "@neo4j/introspector";
 import neo4j from "neo4j-driver";
 
+const port = process.env.PORT;
+
 const driver = neo4j.driver(
     "neo4j+s://c399c0ae.databases.neo4j.io",
     neo4j.auth.basic("neo4j", "fgvbEdyXFcdqauSG87118iWfaSIm9joWUikQNJuMPmY")
@@ -21,7 +23,7 @@ async function main() {
         schema: await neoSchema.getSchema(),
     });
     const {url} = await startStandaloneServer(server, {
-        context: async ({ req }) => ({ req }), listen: { port: 4000 }
+        context: async ({ req }) => ({ req }), listen: { port: port || 4000 }
     });
     //console.log('server', server);
     console.log(`🚀 Server ready at ${url}`);
